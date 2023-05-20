@@ -148,14 +148,16 @@ const Header = () => {
 					</ul>
 				</div>
 				<Link to={"/"}>
-					<h1 className="w-56 flex items-center justify-center font-extrabold text-4xl bg-gradient-to-r from-sky-500 from-10% via-blue-500 to-fuchsia-600 to-90% bg-clip-text text-transparent">
+					<div className="flex items-center justify-center ">
 						<img
 							className="w-14 h-14 mr-2"
 							src={logo}
 							alt="logo image"
 						/>
-						KidsPlay
-					</h1>
+						<h1 className="font-extrabold text-4xl text-gradient">
+							KidsPlay
+						</h1>
+					</div>
 				</Link>
 			</div>
 			<div className="navbar-center hidden lg:flex">
