@@ -1,17 +1,21 @@
+import { updateProfile } from "firebase/auth";
 import Lottie from "lottie-react";
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import animation from "../../../public/assets/login-animation.json";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
+	const { createUser } = useContext(AuthContext);
+
 	const [name, setName] = useState(""),
-    [email, setEmail] = useState(""),
-	[password, setPassword] = useState(""),
-    [image, setImage] = useState("");
+		[email, setEmail] = useState(""),
+		[password, setPassword] = useState(""),
+		[image, setImage] = useState("");
 
 	// input field value event handler
-    const nameEvent = (e) => {
+	const nameEvent = (e) => {
 		setName(e.target.value);
 	};
 
@@ -23,15 +27,29 @@ const Register = () => {
 		setPassword(e.target.value);
 	};
 
-    const imageEvent = (e) => {
+	const imageEvent = (e) => {
 		setImage(e.target.value);
 	};
 
 	// submission event handler
 	const registerEvent = (e) => {
 		e.preventDefault();
+		createUser(email, password)
+			.then((result) => {
+				const user = result.user;
+				updateProfile(user, {
+					displayName: name,
+					photoURL: image,
+				});
 
-		console.log(name, email, password, image);
+				setName("");
+				setEmail("");
+				setPassword("");
+				setImage("");
+			})
+			.catch((err) => {
+				console.log(err.message);
+			});
 	};
 
 	return (

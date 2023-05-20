@@ -1,27 +1,41 @@
 import Lottie from "lottie-react";
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import animation from "../../../public/assets/login-animation.json";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import animation from "../../../public/assets/login-animation.json";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+	const { signIn } = useContext(AuthContext);
 
-    // input field value event handler
-    const emailEvent = (e) => {
-        setEmail(e.target.value);
-    }
-    const passwordEvent = (e) => {
-        setPassword(e.target.value);
-    }
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-    // submission event handler
-    const logInEvent = (e) => {
-        e.preventDefault();
+	// input field value event handler
+	const emailEvent = (e) => {
+		setEmail(e.target.value);
+	};
+	const passwordEvent = (e) => {
+		setPassword(e.target.value);
+	};
 
-        console.log(email, password);
-    }
+	// submission event handler
+	const logInEvent = (e) => {
+		e.preventDefault();
+
+		signIn(email, password)
+			.then((result) => {
+
+				console.log(result);
+				setEmail("");
+				setPassword("");
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+
+		console.log(email, password);
+	};
 
 	return (
 		<div className="max-w-7xl mx-auto flex flex-col items-center justify-center md:flex-row max-[639px]:gap-40 pb-20 md:pt-20">
@@ -35,28 +49,32 @@ const Login = () => {
 				<form onSubmit={logInEvent} className="w-full">
 					<div className="form-control mb-2">
 						<label className="label">
-							<span className="label-text text-base font-semibold">Email</span>
+							<span className="label-text text-base font-semibold">
+								Email
+							</span>
 						</label>
 						<input
 							type="email"
 							placeholder="Enter your email"
 							className="input input-bordered"
-                            value={email}
-                            onChange={emailEvent}
-                            required
+							value={email}
+							onChange={emailEvent}
+							required
 						/>
 					</div>
 					<div className="form-control mb-2">
 						<label className="label">
-							<span className="label-text text-base font-semibold">Password</span>
+							<span className="label-text text-base font-semibold">
+								Password
+							</span>
 						</label>
 						<input
 							type="password"
 							placeholder="Enter your password"
 							className="input input-bordered"
-                            value={password}
-                            onChange={passwordEvent}
-                            required
+							value={password}
+							onChange={passwordEvent}
+							required
 						/>
 						<label className="label">
 							<a
@@ -68,14 +86,26 @@ const Login = () => {
 						</label>
 					</div>
 					<div className="form-control mt-6">
-						<button className="btn bg-sky-500 border-0 hover:bg-sky-500 hover:scale-105">Login</button>
+						<button className="btn bg-sky-500 border-0 hover:bg-sky-500 hover:scale-105">
+							Login
+						</button>
 					</div>
 				</form>
-                <div className="mt-6 text-center
-                ">
-                    <p>Are not member of KidsPlay? <Link className="text-sky-500 font-semibold
-                    " to={"/authentication/register"}>Register Now</Link></p>
-                </div>
+				<div
+					className="mt-6 text-center
+                "
+				>
+					<p>
+						Are not member of KidsPlay?{" "}
+						<Link
+							className="text-sky-500 font-semibold
+                    "
+							to={"/authentication/register"}
+						>
+							Register Now
+						</Link>
+					</p>
+				</div>
 			</div>
 		</div>
 	);

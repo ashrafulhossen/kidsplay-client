@@ -1,10 +1,13 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import logo from "/assets/logo.png";
 import userImage from "/assets/user.png";
 
 const Header = () => {
+	const { user, logOut } = useContext(AuthContext);
+	console.log(user);
 	// List items
 	const listItems = (
 		<>
@@ -67,6 +70,10 @@ const Header = () => {
 		setHover(!isHover);
 	};
 
+	const logOutEvent = () => {
+		logOut();
+	};
+
 	return (
 		<div className="navbar w-full justify-between py-6 mx-auto max-w-7xl px-2 sm:px-6 bg-base-100">
 			<div className="navbar-start max-[429px]:w-full flex max-[429px]:justify-between">
@@ -95,29 +102,44 @@ const Header = () => {
 						className="menu menu-compact rounded-lg dropdown-content block mt-3 p-2 shadow-md bg-base-100 w-52"
 					>
 						<li className="hidden space-x-5 max-[449px]:flex flex-row items-center justify-between">
-							<NavLink
-								to={"/authentication/login"}
-								className={({ isActive }) =>
-									`navlink ${
-										isActive &&
-										"border-black border-b-2 text-lg font-bold hover:scale-110 transition-transform duration-200"
-									}`
-								}
-							>
-								Login
-							</NavLink>
+							{user ? (
+								<button
+									onClick={logOutEvent}
+									className="text-lg font-bold hover:scale-110 transition-transform duration-200"
+								>
+									Logout
+								</button>
+							) : (
+								<NavLink
+									to={"/authentication/login"}
+									className={({ isActive }) =>
+										`navlink ${
+											isActive &&
+											"border-black border-b-2 text-lg font-bold hover:scale-110 transition-transform duration-200"
+										}`
+									}
+								>
+									Login
+								</NavLink>
+							)}
 							<div
 								onClick={onMouseHoverEvent}
 								className="relative active:bg-transparent hover:bg-transparent"
 							>
 								<img
 									className="w-8 h-8 rounded-full border-2 border-black"
-									src={userImage}
+									src={
+										user?.photoURL != null
+											? user.photoURL
+											: userImage
+									}
 									alt="user image"
 								/>
 								{isHover && (
-									<p className="absolute -top-5 -left-12 text-center w-40 text-lg font-bold">
-										UserName
+									<p className="absolute top-10 -left-12 text-center w-40 text-lg font-bold">
+										{user?.displayName != null
+											? user.displayName
+											: "UserName"}
 									</p>
 								)}
 							</div>
@@ -140,11 +162,20 @@ const Header = () => {
 				<ul className="menu menu-horizontal px-1">{listItems}</ul>
 			</div>
 			<div className="justify-end w-28 md:w-1/2 hidden space-x-5 min-[450px]:flex">
-				<Link to={"/authentication/login"}>
-					<button className="text-lg font-bold hover:scale-110 transition-transform duration-200">
-						Login
+				{user ? (
+					<button
+						onClick={logOutEvent}
+						className="text-lg font-bold hover:scale-110 transition-transform duration-200"
+					>
+						Logout
 					</button>
-				</Link>
+				) : (
+					<Link to={"/authentication/login"}>
+						<button className="text-lg font-bold hover:scale-110 transition-transform duration-200">
+							Login
+						</button>
+					</Link>
+				)}
 				<div
 					onMouseEnter={onMouseHoverEvent}
 					onMouseLeave={onMouseHoverEvent}
@@ -152,12 +183,14 @@ const Header = () => {
 				>
 					<img
 						className="w-8 h-8 rounded-full border-2 border-black"
-						src={userImage}
+						src={user?.photoURL != null ? user.photoURL : userImage}
 						alt="user image"
 					/>
 					{isHover && (
 						<p className="absolute top-10 -left-16 text-center w-40 text-lg font-bold">
-							UserName
+							{user?.displayName != null
+								? user.displayName
+								: "UserName"}
 						</p>
 					)}
 				</div>

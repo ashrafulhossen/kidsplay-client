@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AuthProvider from "./AuthProvider/AuthProvider";
 import "./index.css";
-import Main from "./Layout/Main.jsx";
-import AllToys from "./Page/AllToys/AllToys";
-import Home from "./Page/Home/Home/Home";
-import MyToys from "./Page/MyToys/MyToys";
-import AddToy from "./Page/AddToy/AddToy";
-import Blogs from "./Page/Blogs/Blogs";
-import Login from "./Page/Login/Login";
 import Authentication from "./Layout/Authentication";
+import Main from "./Layout/Main.jsx";
+import AddToy from "./Page/AddToy/AddToy";
+import AllToys from "./Page/AllToys/AllToys";
+import Blogs from "./Page/Blogs/Blogs";
+import Home from "./Page/Home/Home/Home";
+import Login from "./Page/Login/Login";
+import MyToys from "./Page/MyToys/MyToys";
 import Register from "./Page/Register/Register";
 
 const router = createBrowserRouter([
@@ -25,19 +26,22 @@ const router = createBrowserRouter([
 			{ path: "/myToys", element: <MyToys /> },
 			{ path: "/addToy", element: <AddToy /> },
 			{ path: "/blogs", element: <Blogs /> },
-
 		],
 	},
 	{
-		path: "/authentication", element: <Authentication />, children: [
-			{path: "/authentication/login", element: <Login/>},
-			{path: "/authentication/register", element: <Register/>},
-		]
-	}
+		path: "/authentication",
+		element: <Authentication />,
+		children: [
+			{ path: "/authentication/login", element: <Login /> },
+			{ path: "/authentication/register", element: <Register /> },
+		],
+	},
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<AuthProvider>
+			<RouterProvider router={router} />
+		</AuthProvider>
 	</React.StrictMode>
 );
