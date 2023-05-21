@@ -10,7 +10,7 @@ import bannerImage5 from "/assets/home/banner5.jpg";
 const Banner = () => {
 	return (
 		<div className="max-w-7xl px-4 pt-8 pb-20 mx-auto">
-			<div className="carousel w-full">
+			<div className="carousel w-full gap-20 sm:gap-4">
 				<div id="slide1" className="carousel-item relative w-full">
 					<img
 						src={bannerImage1}
@@ -20,7 +20,7 @@ const Banner = () => {
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
 							<h2
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
-								className="text-6xl font-bold text-white"
+								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
 								Let's Make Learn Into Fun
 							</h2>
@@ -67,7 +67,7 @@ const Banner = () => {
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
 							<h2
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
-								className="text-6xl font-bold text-white"
+								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
 								Let's Do Some Experiment
 							</h2>
@@ -114,7 +114,7 @@ const Banner = () => {
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
 							<h2
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
-								className="text-6xl font-bold text-white"
+								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
 								Let's Think
 							</h2>
@@ -161,7 +161,7 @@ const Banner = () => {
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
 							<h2
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
-								className="text-6xl font-bold text-white"
+								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
 								Let's Make Something
 							</h2>
@@ -208,7 +208,7 @@ const Banner = () => {
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
 							<h2
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
-								className="text-6xl font-bold text-white"
+								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
 								Explore Yourself
 							</h2>

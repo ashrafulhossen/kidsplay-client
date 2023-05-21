@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCms2ii-ppw7WuxZIsjfYXQl4d8GJx8fZo",
-  authDomain: "kidsplay-f6664.firebaseapp.com",
-  projectId: "kidsplay-f6664",
-  storageBucket: "kidsplay-f6664.appspot.com",
-  messagingSenderId: "729774116793",
-  appId: "1:729774116793:web:4a9008dea308605ba87068"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
