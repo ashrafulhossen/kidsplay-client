@@ -11,9 +11,10 @@ import Blogs from "./Page/Blogs/Blogs";
 import Home from "./Page/Home/Home/Home";
 import Login from "./Page/Login/Login";
 import MyToys from "./Page/MyToys/MyToys";
+import Page404 from "./Page/Page404/Page404";
 import Register from "./Page/Register/Register";
-import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import SingleToy from "./Page/SingleToy/SingleToy";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
 	{
@@ -24,14 +25,28 @@ const router = createBrowserRouter([
 			{
 				path: "/allToys",
 				element: <AllToys />,
-				loader: () => fetch("http://localhost:5000/allToys")
+				loader: () => fetch("http://localhost:5000/allToys"),
 			},
 			{
 				path: "/toy/:_id",
-				element: <SingleToy />,
-				loader: ({params}) => fetch(`http://localhost:5000/toy/${params._id}`)
+				element: (
+					<PrivateRoute>
+						<SingleToy />
+					</PrivateRoute>
+				),
+				loader: ({ params }) =>
+					fetch(`http://localhost:5000/toy/${params._id}`),
 			},
-			{ path: "/myToys", element: <MyToys /> },
+			{
+				path: "/myToys/:uid",
+				element: (
+					<PrivateRoute>
+						<MyToys />
+					</PrivateRoute>
+				),
+				loader: ({ params }) =>
+					fetch(`http://localhost:5000/myToys/${params.uid}`),
+			},
 			{
 				path: "/addToy",
 				element: (
@@ -51,6 +66,7 @@ const router = createBrowserRouter([
 			{ path: "/authentication/register", element: <Register /> },
 		],
 	},
+	{ path: "*", element: <Page404 /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -7,7 +7,6 @@ import userImage from "/assets/user.png";
 
 const Header = () => {
 	const { user, logOut } = useContext(AuthContext);
-	console.log(user);
 	// List items
 	const listItems = (
 		<>
@@ -33,7 +32,7 @@ const Header = () => {
 			</li>
 			<li className="">
 				<NavLink
-					to={"/myToys"}
+					to={`/myToys/${user?.uid}`}
 					className={({ isActive }) =>
 						`navlink ${isActive && "border-black border-b-2"}`
 					}
