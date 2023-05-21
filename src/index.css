@@ -6,10 +6,17 @@
 	@apply mx-4 bg-transparent text-black font-semibold p-0 rounded-none px-1 hover:scale-110 transition-transform duration-200;
 }
 
-.text-gradient {
-	@apply bg-gradient-to-r from-sky-500 via-blue-500 to-fuchsia-600 to-70% bg-clip-text text-transparent
+.bg-gradient {
+	@apply bg-gradient-to-r from-[#0ea4e950] via-[#3b83f690] via-40% to-[#bf26d380] to-70%;
 }
 
+.text-gradient {
+	@apply bg-gradient-to-r from-sky-500 via-blue-500 to-fuchsia-600 to-70% bg-clip-text text-transparent;
+}
+
+.btn-bg {
+	@apply bg-sky-500 hover:bg-fuchsia-500 transition-colors duration-300;
+}
 
 .menu[class*=" px-"]:not(.menu[class*=" px-0"]) li > *,
 .menu[class*=" p-"]:not(.menu[class*=" p-0"]) li > * {

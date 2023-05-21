@@ -1,13 +1,16 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AddToy = () => {
-    const {user} = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
+
 	const [name, setName] = useState(""),
 		[image, setImage] = useState(""),
 		[price, setPrice] = useState(""),
 		[details, setDetails] = useState(""),
+		[category, setCategory] = useState(""),
 		[subCategory, setSubCategory] = useState(""),
 		[quantity, setQuantity] = useState(""),
 		[rating, setRating] = useState("");
@@ -30,6 +33,10 @@ const AddToy = () => {
 
 	const detailsEvent = (e) => {
 		setDetails(e.target.value);
+	};
+
+	const categoryEvent = (e) => {
+		setCategory(e.target.value);
 	};
 
 	const subCategoryEvent = (e) => {
@@ -59,12 +66,13 @@ const AddToy = () => {
 		const toy = {
 			name,
 			image,
+			category,
 			subCategory,
 			price,
 			quantity,
 			rating,
 			details,
-			seller: { sellerName, sellerEmail },
+			seller: { sellerName, sellerEmail, sellerUid: user.uid },
 		};
 
 		const postData = async () => {
@@ -79,17 +87,30 @@ const AddToy = () => {
 
 				const data = await res.json();
 				if (data.insertedId) {
+					Swal.fire({
+						title: "Success",
+						text: "Coffee added successfully",
+						icon: "success",
+						confirmButtonText: "Cool",
+					});
+
 					setName("");
 					setImage("");
 					setSellerName("");
 					setSellerEmail("");
+					setCategory("");
 					setSubCategory("");
 					setPrice("");
 					setQuantity("");
 					setRating("");
 					setDetails("");
 				} else {
-					console.log(data);
+					Swal.fire({
+						icon: "error",
+						title: "Opps...",
+						text: "Something went wrong! Please try again later.",
+						footer: '<a href="">Why do I have this issue?</a>',
+					});
 				}
 			} catch {
 				(err) => {
@@ -172,8 +193,39 @@ const AddToy = () => {
 								required
 							/>
 						</div>
+						<div className="form-control mb-4">
+							<label className="label">
+								<span className="label-text text-base font-semibold">
+									Details
+								</span>
+							</label>
+							<textarea
+								cols="30"
+								rows="4"
+								placeholder="Enter toy's details"
+								className="input input-bordered h-auto w-full p-2"
+								value={details}
+								onChange={detailsEvent}
+								required
+							></textarea>
+						</div>
 					</div>
 					<div>
+						<div className="form-control mb-4">
+							<label className="label">
+								<span className="label-text text-base font-semibold">
+									Sub-Category
+								</span>
+							</label>
+							<input
+								type="text"
+								placeholder="Enter toy's sub-category"
+								className="input input-bordered w-full"
+								value={category}
+								onChange={categoryEvent}
+								required
+							/>
+						</div>
 						<div className="form-control mb-4">
 							<label className="label">
 								<span className="label-text text-base font-semibold">
@@ -236,22 +288,6 @@ const AddToy = () => {
 						</div>
 					</div>
 					<div className="col-span-2">
-						<div className="form-control mb-4">
-							<label className="label">
-								<span className="label-text text-base font-semibold">
-									Details
-								</span>
-							</label>
-							<textarea
-								cols="30"
-								rows="4"
-								placeholder="Enter toy's details"
-								className="input input-bordered h-auto w-full p-2"
-								value={details}
-								onChange={detailsEvent}
-								required
-							></textarea>
-						</div>
 						<div className="form-control mt-6">
 							<button className="btn bg-sky-500 border-0 hover:bg-sky-500 hover:scale-105">
 								Add Toy

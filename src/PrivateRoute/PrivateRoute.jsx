@@ -5,10 +5,10 @@ import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const PrivateRoute = ({ children }) => {
-	const { user, loading } = useContext(AuthContext);
+	const { user, loadingUser } = useContext(AuthContext);
 	const location = useLocation();
 
-	if (loading) {
+	if (loadingUser) {
 		return (
 			<div className="flex items-center justify-center">
 				<progress className="progress w-56 h-12"></progress>

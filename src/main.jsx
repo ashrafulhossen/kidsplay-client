@@ -13,6 +13,7 @@ import Login from "./Page/Login/Login";
 import MyToys from "./Page/MyToys/MyToys";
 import Register from "./Page/Register/Register";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import SingleToy from "./Page/SingleToy/SingleToy";
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +24,12 @@ const router = createBrowserRouter([
 			{
 				path: "/allToys",
 				element: <AllToys />,
+				loader: () => fetch("http://localhost:5000/allToys")
+			},
+			{
+				path: "/toy/:_id",
+				element: <SingleToy />,
+				loader: ({params}) => fetch(`http://localhost:5000/toy/${params._id}`)
 			},
 			{ path: "/myToys", element: <MyToys /> },
 			{
