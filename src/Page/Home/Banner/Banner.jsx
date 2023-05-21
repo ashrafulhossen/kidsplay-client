@@ -18,10 +18,16 @@ const Banner = () => {
 					/>
 					<div className="absolute top-0 left-0 w-full h-full rounded-xl flex items-center justify-end bg-gradient-to-r from-[#0ea4e950] via-[#3b83f690] via-40% to-[#bf26d380] to-70%">
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
-							<h2 className="text-6xl font-bold text-white">
+							<h2
+								style={{ textShadow: "5px 5px 8px #444444a9" }}
+								className="text-6xl font-bold text-white"
+							>
 								Let's Make Learn Into Fun
 							</h2>
-							<p className="text-lg text-white font-medium">
+							<p
+								style={{ textShadow: "0px 0px 5px #44444480" }}
+								className="text-lg text-white font-medium"
+							>
 								Developing critical thinking in kids is crucial.
 								Encourage puzzles, brain teasers, and asking
 								questions. Create a safe space for expression.
@@ -52,17 +58,23 @@ const Banner = () => {
 						</div>
 					</div>
 				</div>
-                <div id="slide2" className="carousel-item relative w-full">
+				<div id="slide2" className="carousel-item relative w-full">
 					<img
 						src={bannerImage2}
 						className="w-full max-[399px]:min-h-[1050px] min-[400px]:min-h-[850px] sm:min-h-[800px] sm:max-h-[800px] object-cover rounded-xl"
 					/>
 					<div className="absolute top-0 left-0 w-full h-full rounded-xl flex items-center justify-end bg-gradient-to-r from-[#0ea4e950] via-[#3b83f690] via-40% to-[#bf26d380] to-70%">
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
-							<h2 className="text-6xl font-bold text-white">
+							<h2
+								style={{ textShadow: "5px 5px 8px #444444a9" }}
+								className="text-6xl font-bold text-white"
+							>
 								Let's Do Some Experiment
 							</h2>
-							<p className="text-lg text-white font-medium">
+							<p
+								style={{ textShadow: "0px 0px 5px #44444480" }}
+								className="text-lg text-white font-medium"
+							>
 								Developing critical thinking in kids is crucial.
 								Encourage puzzles, brain teasers, and asking
 								questions. Create a safe space for expression.
@@ -93,17 +105,23 @@ const Banner = () => {
 						</div>
 					</div>
 				</div>
-                <div id="slide3" className="carousel-item relative w-full">
+				<div id="slide3" className="carousel-item relative w-full">
 					<img
 						src={bannerImage3}
 						className="w-full max-[399px]:min-h-[1050px] min-[400px]:min-h-[850px] sm:min-h-[800px] sm:max-h-[800px] object-cover rounded-xl"
 					/>
 					<div className="absolute top-0 left-0 w-full h-full rounded-xl flex items-center justify-end bg-gradient-to-r from-[#0ea4e950] via-[#3b83f690] via-40% to-[#bf26d380] to-70%">
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
-							<h2 className="text-6xl font-bold text-white">
+							<h2
+								style={{ textShadow: "5px 5px 8px #444444a9" }}
+								className="text-6xl font-bold text-white"
+							>
 								Let's Think
 							</h2>
-							<p className="text-lg text-white font-medium">
+							<p
+								style={{ textShadow: "0px 0px 5px #44444480" }}
+								className="text-lg text-white font-medium"
+							>
 								Developing critical thinking in kids is crucial.
 								Encourage puzzles, brain teasers, and asking
 								questions. Create a safe space for expression.
@@ -134,17 +152,23 @@ const Banner = () => {
 						</div>
 					</div>
 				</div>
-                <div id="slide4" className="carousel-item relative w-full">
+				<div id="slide4" className="carousel-item relative w-full">
 					<img
 						src={bannerImage4}
 						className="w-full max-[399px]:min-h-[1050px] min-[400px]:min-h-[850px] sm:min-h-[800px] sm:max-h-[800px] object-cover rounded-xl"
 					/>
 					<div className="absolute top-0 left-0 w-full h-full rounded-xl flex items-center justify-end bg-gradient-to-r from-[#0ea4e950] via-[#3b83f690] via-40% to-[#bf26d380] to-70%">
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
-							<h2 className="text-6xl font-bold text-white">
+							<h2
+								style={{ textShadow: "5px 5px 8px #444444a9" }}
+								className="text-6xl font-bold text-white"
+							>
 								Let's Make Something
 							</h2>
-							<p className="text-lg text-white font-medium">
+							<p
+								style={{ textShadow: "0px 0px 5px #44444480" }}
+								className="text-lg text-white font-medium"
+							>
 								Developing critical thinking in kids is crucial.
 								Encourage puzzles, brain teasers, and asking
 								questions. Create a safe space for expression.
@@ -175,17 +199,23 @@ const Banner = () => {
 						</div>
 					</div>
 				</div>
-                <div id="slide5" className="carousel-item relative w-full">
+				<div id="slide5" className="carousel-item relative w-full">
 					<img
 						src={bannerImage5}
 						className="w-full max-[399px]:min-h-[1050px] min-[400px]:min-h-[850px] sm:min-h-[800px] sm:max-h-[800px] lg:object-bottom object-center object-cover rounded-xl"
 					/>
 					<div className="absolute top-0 left-0 w-full h-full rounded-xl flex items-center justify-end bg-gradient-to-r from-[#0ea4e950] via-[#3b83f690] via-40% to-[#bf26d380] to-70%">
 						<div className="space-y-7 text-center sm:text-left lg:px-36 sm:px-16 px-2 ">
-							<h2 className="text-6xl font-bold text-white">
+							<h2
+								style={{ textShadow: "5px 5px 8px #444444a9" }}
+								className="text-6xl font-bold text-white"
+							>
 								Explore Yourself
 							</h2>
-							<p className="text-lg text-white font-medium">
+							<p
+								style={{ textShadow: "0px 0px 5px #44444480" }}
+								className="text-lg text-white font-medium"
+							>
 								Developing critical thinking in kids is crucial.
 								Encourage puzzles, brain teasers, and asking
 								questions. Create a safe space for expression.

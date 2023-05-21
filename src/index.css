@@ -10,6 +10,7 @@
 	@apply bg-gradient-to-r from-sky-500 via-blue-500 to-fuchsia-600 to-70% bg-clip-text text-transparent
 }
 
+
 .menu[class*=" px-"]:not(.menu[class*=" px-0"]) li > *,
 .menu[class*=" p-"]:not(.menu[class*=" p-0"]) li > * {
 	@apply rounded-none;
