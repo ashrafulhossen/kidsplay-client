@@ -1,7 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AddToy = () => {
+    const {user} = useContext(AuthContext);
 	const [name, setName] = useState(""),
 		[image, setImage] = useState(""),
 		[price, setPrice] = useState(""),
@@ -10,8 +12,8 @@ const AddToy = () => {
 		[quantity, setQuantity] = useState(""),
 		[rating, setRating] = useState("");
 
-	const [sellerName, setSellerName] = useState(""),
-		[sellerEmail, setSellerEmail] = useState("");
+	const [sellerName, setSellerName] = useState(user?.displayName || ""),
+		[sellerEmail, setSellerEmail] = useState(user?.email || "");
 
 	// input field value event handler
 	const nameEvent = (e) => {
@@ -54,10 +56,6 @@ const AddToy = () => {
 	const submitEvent = (e) => {
 		e.preventDefault();
 
-		// setName("");
-		// setEmail("");
-		// setPassword("");
-		// setImage("");
 		const toy = {
 			name,
 			image,
@@ -68,7 +66,39 @@ const AddToy = () => {
 			details,
 			seller: { sellerName, sellerEmail },
 		};
-        console.log(toy);
+
+		const postData = async () => {
+			try {
+				const res = await fetch("http://localhost:5000/toys/add", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json",
+					},
+					body: JSON.stringify(toy),
+				});
+
+				const data = await res.json();
+				if (data.insertedId) {
+					setName("");
+					setImage("");
+					setSellerName("");
+					setSellerEmail("");
+					setSubCategory("");
+					setPrice("");
+					setQuantity("");
+					setRating("");
+					setDetails("");
+				} else {
+					console.log(data);
+				}
+			} catch {
+				(err) => {
+					console.log(err.message);
+				};
+			}
+		};
+		postData();
+		console.log(toy);
 	};
 
 	return (
@@ -213,7 +243,8 @@ const AddToy = () => {
 								</span>
 							</label>
 							<textarea
-								cols="30" rows="4"
+								cols="30"
+								rows="4"
 								placeholder="Enter toy's details"
 								className="input input-bordered h-auto w-full p-2"
 								value={details}
