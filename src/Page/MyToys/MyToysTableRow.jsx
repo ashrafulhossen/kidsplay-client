@@ -7,7 +7,7 @@ import Modal from "./Modal";
 const MyToysTableRow = ({ toy, serial, deleteEvent, updateEvent }) => {
 	const { _id, name, Category, subCategory, price, quantity, seller } = toy;
 	const [toyPrice, setToyPrice] = useState(price),
-	[toyQuantity, setToyQuantity] = useState(quantity);
+		[toyQuantity, setToyQuantity] = useState(quantity);
 
 	const deleteToyEvent = (_id) => {
 		const swalWithBootstrapButtons = Swal.mixin({
@@ -51,8 +51,12 @@ const MyToysTableRow = ({ toy, serial, deleteEvent, updateEvent }) => {
 		console.log(isDataUpdated);
 		if (isDataUpdated) {
 			Swal.fire("Updated!", "Toy has been updated.", "success");
-			setToyPrice(updatableData?.price);
-			setToyQuantity(updatableData?.quantity); 
+			if (updatableData?.price) {
+				setToyPrice(updatableData?.price);
+			}
+			if (updatableData?.quantity) {
+				setToyQuantity(updatableData?.quantity);
+			}
 		}
 	};
 
@@ -77,7 +81,7 @@ const MyToysTableRow = ({ toy, serial, deleteEvent, updateEvent }) => {
 					>
 						Delete
 					</button>
-					<Modal updateEvent={updateToyEvent} /> 
+					<Modal updateEvent={updateToyEvent} />
 				</td>
 			</tr>
 		</>

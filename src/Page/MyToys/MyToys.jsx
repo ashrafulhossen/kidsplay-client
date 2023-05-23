@@ -6,7 +6,6 @@ import MyToysTableRow from "./MyToysTableRow";
 
 const MyToys = () => {
 	const loadMyAllToys = useLoaderData();
-	console.log(loadMyAllToys);
 	const [myAllToys, setMyAllToys] = useState(loadMyAllToys || []);
 	const [ascendingSorted, setAscendingSorted] = useState(true);
 	const [decendingSorted, setDecendingSorted] = useState(false);
@@ -56,7 +55,7 @@ const MyToys = () => {
 
 	const updateEvent = (updatableData) => {
 		const updateToy = async () => {
-			const res = await fetch(`http://localhost:5000/myToys/${updatableData?._id}/edit`, {
+			const res = await fetch(`https://kidsplay-server.vercel.app/myToys/${updatableData?._id}/edit`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",

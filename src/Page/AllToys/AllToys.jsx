@@ -5,7 +5,6 @@ import ToyTableRow from "./ToyTableRow";
 
 const AllToys = () => {
 	const loadAllToys = useLoaderData();
-	console.log(loadAllToys);
     const [storeToys, setStoreToys] = useState(loadAllToys.slice(0, 20) || []);
 	const [allToys, setAllToys] = useState(storeToys);
 	const [showAll, setShowAll] = useState(false);

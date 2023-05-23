@@ -2,6 +2,7 @@
 import React from "react";
 import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
+import ShopByCategory from "../ShopByCategory/ShopByCategory";
 
 const Home = () => {
 	return (
@@ -11,6 +12,9 @@ const Home = () => {
 
 			{/* Gallery Section */}
 			<Gallery />
+
+			{/* Shop By Category Section */}
+			<ShopByCategory />
 		</div>
 	);
 };

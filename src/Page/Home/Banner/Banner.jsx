@@ -22,7 +22,7 @@ const Banner = () => {
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
 								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
-								Let's Make Learn Into Fun
+								Let us Make Learn Into Fun
 							</h2>
 							<p
 								style={{ textShadow: "0px 0px 5px #44444480" }}
@@ -69,7 +69,7 @@ const Banner = () => {
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
 								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
-								Let's Do Some Experiment
+								Let us Do Some Experiment
 							</h2>
 							<p
 								style={{ textShadow: "0px 0px 5px #44444480" }}
@@ -116,7 +116,7 @@ const Banner = () => {
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
 								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
-								Let's Think
+								Let us Think
 							</h2>
 							<p
 								style={{ textShadow: "0px 0px 5px #44444480" }}
@@ -163,7 +163,7 @@ const Banner = () => {
 								style={{ textShadow: "5px 5px 8px #444444a9" }}
 								className="max-[450px]:text-4xl text-6xl font-bold text-white"
 							>
-								Let's Make Something
+								Let us Make Something
 							</h2>
 							<p
 								style={{ textShadow: "0px 0px 5px #44444480" }}
