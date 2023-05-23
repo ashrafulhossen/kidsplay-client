@@ -77,7 +77,7 @@ const AddToy = () => {
 
 		const postData = async () => {
 			try {
-				const res = await fetch("http://localhost:5000/toys/add", {
+				const res = await fetch("https://kidsplay-server.vercel.app/toys/add", {
 					method: "POST",
 					headers: {
 						"content-type": "application/json",
@@ -214,12 +214,12 @@ const AddToy = () => {
 						<div className="form-control mb-4">
 							<label className="label">
 								<span className="label-text text-base font-semibold">
-									Sub-Category
+									Category
 								</span>
 							</label>
 							<input
 								type="text"
-								placeholder="Enter toy's sub-category"
+								placeholder="Enter toy's category"
 								className="input input-bordered w-full"
 								value={category}
 								onChange={categoryEvent}

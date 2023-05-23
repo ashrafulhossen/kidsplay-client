@@ -6,12 +6,28 @@ import MyToysTableRow from "./MyToysTableRow";
 
 const MyToys = () => {
 	const loadMyAllToys = useLoaderData();
-    const [myAllToys, setMyAllToys] = useState(loadMyAllToys || []);
+	console.log(loadMyAllToys);
+	const [myAllToys, setMyAllToys] = useState(loadMyAllToys || []);
+	const [ascendingSorted, setAscendingSorted] = useState(true);
+	const [decendingSorted, setDecendingSorted] = useState(false);
+
+	const sorting = () => {
+		if (ascendingSorted) {
+			myAllToys.sort((a, b) => a.price - b.price);
+			setAscendingSorted(false);
+			setDecendingSorted(true);
+		}
+		if (decendingSorted) {
+			myAllToys.sort((a, b) => b.price - a.price);
+			setDecendingSorted(false);
+			setAscendingSorted(true);
+		}
+	};
 
 	const deleteEvent = (_id) => {
 		const deleteToy = async () => {
 			const res = await fetch(
-				`http://localhost:5000/myToys/${_id}/delete`,
+				`https://kidsplay-server.vercel.app/myToys/${_id}/delete`,
 				{
 					method: "DELETE",
 					headers: {
@@ -37,6 +53,22 @@ const MyToys = () => {
 		deleteToy();
 	};
 
+
+	const updateEvent = (updatableData) => {
+		const updateToy = async () => {
+			const res = await fetch(`http://localhost:5000/myToys/${updatableData?._id}/edit`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(updatableData),
+			});
+			const data = await res.json();
+			return data?.modifiedCount;
+		}
+		return updateToy();
+	}
+
 	return (
 		<div className="max-w-7xl px-4 mx-auto py-16 ">
 			<h2 className="text-4xl font-bold mb-8 text-center">My Toys</h2>
@@ -57,16 +89,21 @@ const MyToys = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{myAllToys.length > 0 && myAllToys.map((toy, index) => (
-							<MyToysTableRow
-								key={toy._id}
-								serial={index + 1}
-								toy={toy}
-                                deleteEvent={deleteEvent}
-							/>
-						))}
+						{myAllToys.length > 0 &&
+							myAllToys.map((toy, index) => (
+								<MyToysTableRow
+									key={toy._id}
+									serial={index + 1}
+									toy={toy}
+									deleteEvent={deleteEvent}
+									updateEvent={updateEvent}
+								/>
+							))}
 					</tbody>
 				</table>
+			</div>
+			<div className="text-center mt-8">
+				<button onClick={sorting} className="py-2 px-6 btn-bg text-white text-lg font-bold rounded-lg">Sort</button>
 			</div>
 		</div>
 	);

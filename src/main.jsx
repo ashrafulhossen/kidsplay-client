@@ -15,6 +15,7 @@ import Page404 from "./Page/Page404/Page404";
 import Register from "./Page/Register/Register";
 import SingleToy from "./Page/SingleToy/SingleToy";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import {Toaster} from "react-hot-toast"
 
 const router = createBrowserRouter([
 	{
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
 			{
 				path: "/allToys",
 				element: <AllToys />,
-				loader: () => fetch("http://localhost:5000/allToys"),
+				loader: () =>
+					fetch("https://kidsplay-server.vercel.app/allToys"),
 			},
 			{
 				path: "/toy/:_id",
@@ -35,7 +37,9 @@ const router = createBrowserRouter([
 					</PrivateRoute>
 				),
 				loader: ({ params }) =>
-					fetch(`http://localhost:5000/toy/${params._id}`),
+					fetch(
+						`https://kidsplay-server.vercel.app/toy/${params._id}`
+					),
 			},
 			{
 				path: "/myToys/:uid",
@@ -45,7 +49,9 @@ const router = createBrowserRouter([
 					</PrivateRoute>
 				),
 				loader: ({ params }) =>
-					fetch(`http://localhost:5000/myToys/${params.uid}`),
+					fetch(
+						`https://kidsplay-server.vercel.app/myToys/${params.uid}`
+					),
 			},
 			{
 				path: "/addToy",
@@ -72,6 +78,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<AuthProvider>
+			<Toaster position="bottom-right" reverseOrder={true} />
 			<RouterProvider router={router} />
 		</AuthProvider>
 	</React.StrictMode>

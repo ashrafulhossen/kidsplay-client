@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
+import Modal from "./Modal";
 
 const MyToysTableRow = ({ toy, serial, deleteEvent, updateEvent }) => {
 	const { _id, name, Category, subCategory, price, quantity, seller } = toy;
+	const [toyPrice, setToyPrice] = useState(price),
+	[toyQuantity, setToyQuantity] = useState(quantity);
 
-    const deleteToyEvent = (_id) => {
-        const swalWithBootstrapButtons = Swal.mixin({
+	const deleteToyEvent = (_id) => {
+		const swalWithBootstrapButtons = Swal.mixin({
 			customClass: {
 				confirmButton:
 					"btn border-0 hover:bg-green-600 bg-green-500 m-4",
@@ -40,25 +43,44 @@ const MyToysTableRow = ({ toy, serial, deleteEvent, updateEvent }) => {
 					);
 				}
 			});
-    }
+	};
+
+	const updateToyEvent = (price, quantity, details) => {
+		const updatableData = { _id, price, quantity, details };
+		const isDataUpdated = updateEvent(updatableData);
+		console.log(isDataUpdated);
+		if (isDataUpdated) {
+			Swal.fire("Updated!", "Toy has been updated.", "success");
+			setToyPrice(updatableData?.price);
+			setToyQuantity(updatableData?.quantity); 
+		}
+	};
+
 	return (
-		<tr>
-			<th>{serial}</th>
-			<td>{seller.sellerName}</td>
-			<td>{name}</td>
-			<td>{Category}</td>
-			<td>{subCategory}</td>
-			<td>{price}</td>
-			<td>{quantity}</td>
-			<td>
-				<button className="mr-2 py-2 px-4  rounded-lg text-white font-semibold btn-bg">
-					Updte
-				</button>
-				<button onClick={() => deleteToyEvent(_id)} className="py-2 px-4  rounded-lg text-white font-semibold btn-bg">
-					Delete
-				</button>
-			</td>
-		</tr>
+		<>
+			<tr>
+				<th>{serial}</th>
+				<td>{seller.sellerName}</td>
+				<td>{name}</td>
+				<td>{Category}</td>
+				<td>{subCategory}</td>
+				<td>{toyPrice}</td>
+				<td>{toyQuantity}</td>
+				<td>
+					<button className="mr-2 py-2 px-4  rounded-lg text-white font-semibold btn-bg">
+						<label htmlFor="my-modal-6">Update</label>
+					</button>
+
+					<button
+						onClick={() => deleteToyEvent(_id)}
+						className="py-2 px-4  rounded-lg text-white font-semibold btn-bg"
+					>
+						Delete
+					</button>
+					<Modal updateEvent={updateToyEvent} /> 
+				</td>
+			</tr>
+		</>
 	);
 };
 

@@ -5,6 +5,7 @@ import ToyTableRow from "./ToyTableRow";
 
 const AllToys = () => {
 	const loadAllToys = useLoaderData();
+	console.log(loadAllToys);
     const [storeToys, setStoreToys] = useState(loadAllToys.slice(0, 20) || []);
 	const [allToys, setAllToys] = useState(storeToys);
 	const [showAll, setShowAll] = useState(false);
@@ -33,6 +34,7 @@ const AllToys = () => {
 			setShowAll(true);
 		}
 	};
+
 
 	return (
 		<div className="max-w-7xl px-4 mx-auto py-16 ">
@@ -76,7 +78,7 @@ const AllToys = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{allToys.length > 0 &&
+						{typeof allToys == "object" && allToys.length > 0 &&
 							allToys.map((toy, index) => (
 								<ToyTableRow
 									key={toy._id}

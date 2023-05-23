@@ -14,7 +14,6 @@ const SingleToy = () => {
 		details,
 		seller: { sellerName, sellerEmail },
 	} = useLoaderData();
-	console.log(sellerName);
 	return (
 		<div className="max-w-7xl px-4 mx-auto py-16">
 			<div className="card lg:card-side shadow-xl p-10 items-center justify-center gap-8">
@@ -53,8 +52,12 @@ const SingleToy = () => {
 						<span className="pb-2">Rating: {rating}</span>
 						<Rating
 							initialRating={rating}
-							fullSymbol={<HiStar className="w-6 h-6 text-yellow-400"/>}
-							emptySymbol={<HiOutlineStar className="w-6 h-6 text-yellow-400" />}
+							fullSymbol={
+								<HiStar className="w-6 h-6 text-yellow-400" />
+							}
+							emptySymbol={
+								<HiOutlineStar className="w-6 h-6 text-yellow-400" />
+							}
 							readonly={true}
 						/>
 					</p>
