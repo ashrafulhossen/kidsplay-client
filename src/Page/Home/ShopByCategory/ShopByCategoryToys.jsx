@@ -9,7 +9,7 @@ const ShopByCategoryToys = ({ subCategory }) => {
 	useEffect(() => {
 		const loadData = async () => {
 			const res = await fetch(
-				`http://localhost:5000/allToys/${subCategory}/`
+				`https://kidsplay-server.vercel.app/allToys/${subCategory}/`
 			);
 			const data = await res.json();
 			setSubCategorizeToys(data);

@@ -10,10 +10,22 @@ const AllToys = () => {
 	const [showAll, setShowAll] = useState(false);
 
 	const searchEvent = async (e) => {
-		const res = await fetch(`http://localhost:5000/allToys/filter=${e.target.value}`);
-		const data = await res.json();
-		console.log(data);
-		// setStoreToys(filteredToys);
+		const search = e.target.value;
+		console.log(search);
+		if (search) {
+			const res = await fetch(
+				`http://localhost:5000/allToys/filter=${search}`
+			);
+			const data = await res.json();
+			setStoreToys(data);
+			setAllToys(data);
+			if (data.length > 20) {
+				setShowAll(true);
+			}
+		} else {
+			setStoreToys(loadAllToys);
+			setAllToys(loadAllToys);
+		}
 	};
 
 	const showAllOrLessEvent = () => {
@@ -53,25 +65,33 @@ const AllToys = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{typeof allToys == "object" &&
-							allToys.length > 0 &&
+						{allToys.length > 0 ? (
 							allToys.map((toy, index) => (
 								<ToyTableRow
 									key={toy._id}
 									serial={index + 1}
 									toy={toy}
 								/>
-							))}
+							))
+						) : (
+							<p className="text-3xl font-bold mt-4 text-center">
+								No toys have been found.
+							</p>
+						)}
 					</tbody>
 				</table>
 			</div>
 			<div className="text-center mt-8">
-				<button
-					className="px-6 py-3 rounded-lg text-lg font-bold text-white btn-bg"
-					onClick={showAllOrLessEvent}
-				>
-					{showAll ? "Show Less" : "Show All"}
-				</button>
+				{storeToys.length >= 20 && (
+					<button
+						className="px-6 py-3 rounded-lg text-lg font-bold text-white btn-bg"
+						onClick={showAllOrLessEvent}
+					>
+						{showAll && storeToys.length > 20
+							? "Show Less"
+							: "Show All"}
+					</button>
+				)}
 			</div>
 		</div>
 	);

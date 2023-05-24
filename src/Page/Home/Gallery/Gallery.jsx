@@ -1,5 +1,7 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import gallery1 from "/assets/gallery/gallery1.png";
 import gallery10 from "/assets/gallery/gallery10.png";
 import gallery11 from "/assets/gallery/gallery11.png";
@@ -28,6 +30,11 @@ const galleryImages = [
 
 const Gallery = () => {
 	const [showAllGallery, setShowAllGallery] = useState(false);
+
+	useEffect(() => {
+		AOS.init();
+	}, []);
+
 	return (
 		<div className="max-w-7xl px-4 mx-auto py-8">
 			<h2 className="text-4xl font-bold text-center">
@@ -40,6 +47,7 @@ const Gallery = () => {
 					: galleryImages.slice(0, 6)
 				).map((galleryImage, index) => (
 					<img
+						data-aos="zoom-in-up"
 						className="w-full h-full rounded-lg hover:scale-110 transition-transform duration-300"
 						key={index}
 						src={galleryImage}
