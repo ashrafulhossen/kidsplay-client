@@ -4,6 +4,7 @@ import Banner from "../Banner/Banner";
 import FrequentlyAskedQuestion from "../FrequentlyAskedQuestion/FrequentlyAskedQuestion";
 import Gallery from "../Gallery/Gallery";
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
+import Subscription from "../Subscription/Subscription";
 
 const Home = () => {
 	return (
@@ -18,6 +19,9 @@ const Home = () => {
 			<ShopByCategory />
 			{/* Frequently Asked Question Section */}
 			<FrequentlyAskedQuestion />
+
+			{/* Subscription Section */}
+			<Subscription />
 		</div>
 	);
 };

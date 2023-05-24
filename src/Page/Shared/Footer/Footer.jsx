@@ -119,6 +119,7 @@ const Footer = () => {
 					</a>
 				</div>
 			</div>
+			<p className="text-center text-zinc-500 text-sm pt-2 pb-1 border-t border-zinc-700">Copyright &copy; 2023 KidsPlay. All rights reserved. Unauthorized use prohibited.</p>
 		</footer>
 	);
 };

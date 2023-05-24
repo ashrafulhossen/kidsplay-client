@@ -3,7 +3,7 @@ import React from "react";
 
 const FrequentlyAskedQuestion = () => {
 	return (
-		<div className="max-w-2xl mx-auto py-16">
+		<div className="max-w-2xl mx-auto py-16 px-4">
             <h2 className="text-4xl font-bold text-center mb-8">Frequently Asked Question</h2>
 			<div className="flex flex-col gap-2">
 				<div
