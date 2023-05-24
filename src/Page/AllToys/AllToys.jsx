@@ -5,23 +5,15 @@ import ToyTableRow from "./ToyTableRow";
 
 const AllToys = () => {
 	const loadAllToys = useLoaderData();
-    const [storeToys, setStoreToys] = useState(loadAllToys.slice(0, 20) || []);
+	const [storeToys, setStoreToys] = useState(loadAllToys.slice(0, 20) || []);
 	const [allToys, setAllToys] = useState(storeToys);
 	const [showAll, setShowAll] = useState(false);
-	const [search, setSearch] = useState("");
 
-	const searchEvent = (e) => {
-		setSearch(e.target.value);
-	};
-
-    const resetSearch = () => {
-        setSearch("");
-        setAllToys(loadAllToys);
-    }
-
-	const searchBtnEvent = () => {
-		const filteredToys = loadAllToys.filter((toy) => toy.name.toLowerCase().includes(search));
-        setStoreToys(filteredToys);
+	const searchEvent = async (e) => {
+		const res = await fetch(`http://localhost:5000/allToys/filter=${e.target.value}`);
+		const data = await res.json();
+		console.log(data);
+		// setStoreToys(filteredToys);
 	};
 
 	const showAllOrLessEvent = () => {
@@ -34,32 +26,16 @@ const AllToys = () => {
 		}
 	};
 
-
 	return (
 		<div className="max-w-7xl px-4 mx-auto py-16 ">
 			<h2 className="text-4xl font-bold mb-8 text-center">All Toys</h2>
-			<div className="form-control py-4">
-				<div className="input-group justify-center">
-					<input
-						type="text"
-						value={search}
-						onChange={searchEvent}
-						placeholder="Search…"
-						className="input input-bordered"
-					/>
-					<button
-						onClick={searchBtnEvent}
-						className="px-6 font-bold text-lg text-white btn-bg border-r border-sky-600"
-					>
-						Search
-					</button>
-                    <button
-						onClick={resetSearch}
-						className="px-6 font-bold text-lg text-white btn-bg "
-					>
-						Reset
-					</button>
-				</div>
+			<div className="form-control w-96 mx-auto py-4">
+				<input
+					type="text"
+					onChange={searchEvent}
+					placeholder="Search…"
+					className="input input-bordered"
+				/>
 			</div>
 			<div className="overflow-x-auto ">
 				<table className="table w-full">
@@ -77,7 +53,8 @@ const AllToys = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{typeof allToys == "object" && allToys.length > 0 &&
+						{typeof allToys == "object" &&
+							allToys.length > 0 &&
 							allToys.map((toy, index) => (
 								<ToyTableRow
 									key={toy._id}
