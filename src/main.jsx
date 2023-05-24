@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Toaster } from "react-hot-toast";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import "./index.css";
@@ -15,7 +16,6 @@ import Page404 from "./Page/Page404/Page404";
 import Register from "./Page/Register/Register";
 import SingleToy from "./Page/SingleToy/SingleToy";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
-import {Toaster} from "react-hot-toast"
 
 const router = createBrowserRouter([
 	{
@@ -76,10 +76,8 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<React.StrictMode>
-		<AuthProvider>
-			<Toaster position="bottom-right" reverseOrder={true} />
-			<RouterProvider router={router} />
-		</AuthProvider>
-	</React.StrictMode>
+	<AuthProvider>
+		<Toaster position="bottom-right" reverseOrder={true} />
+		<RouterProvider router={router} />
+	</AuthProvider>
 );

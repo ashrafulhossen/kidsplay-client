@@ -3,6 +3,7 @@ import React from "react";
 import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
+import FrequentlyAskedQuestion from "../FrequentlyAskedQuestion/FrequentlyAskedQuestion";
 
 const Home = () => {
 	return (
@@ -15,6 +16,8 @@ const Home = () => {
 
 			{/* Shop By Category Section */}
 			<ShopByCategory />
+			{/* Frequently Asked Question Section */}
+			<FrequentlyAskedQuestion/>
 		</div>
 	);
 };
