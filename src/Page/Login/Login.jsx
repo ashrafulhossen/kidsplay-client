@@ -1,16 +1,17 @@
 import Lottie from "lottie-react";
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import animation from "../../../public/assets/login-animation.json";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 	const { signIn } = useContext(AuthContext);
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [err, setErr] = useState("");
 
 	// input field value event handler
 	const emailEvent = (e) => {
@@ -26,16 +27,15 @@ const Login = () => {
 
 		signIn(email, password)
 			.then((result) => {
-
 				console.log(result);
 				setEmail("");
 				setPassword("");
+				setErr("");
 			})
 			.catch((err) => {
-				console.log(err);
+				setErr(err.message);
+				console.log(err.message);
 			});
-
-		console.log(email, password);
 	};
 
 	return (
@@ -83,14 +83,7 @@ const Login = () => {
 							onChange={passwordEvent}
 							required
 						/>
-						<label className="label">
-							<a
-								href="#"
-								className="label-text-alt link link-hover"
-							>
-								Forgot password?
-							</a>
-						</label>
+						{err && <p className="text-sm mt-2 text-red-600">{err}</p>}
 					</div>
 					<div className="form-control mt-6">
 						<button className="btn bg-sky-500 border-0 hover:bg-sky-500 hover:scale-105">

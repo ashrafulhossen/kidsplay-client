@@ -18,7 +18,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
-	const [loadingUser, setLoadingUser] = useState(true);
+	const [loadingUser, setLoadingUser] = useState(false);
 
 	useEffect(() => {
 		setLoadingUser(true);
@@ -29,6 +29,7 @@ const AuthProvider = ({ children }) => {
 			} else {
 				setUser(null);
 			}
+			setLoadingUser(false);
 		});
 		return () => {
 			unsubscribe();
@@ -47,7 +48,7 @@ const AuthProvider = ({ children }) => {
 	};
 	// User Log Out
 	const logOut = () => {
-		setLoadingUser(true);
+		setUser(null)
 		return signOut(auth);
 	};
     // Sign up with google

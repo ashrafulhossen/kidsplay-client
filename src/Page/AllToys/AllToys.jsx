@@ -15,7 +15,7 @@ const AllToys = () => {
 		console.log(search);
 		if (search) {
 			const res = await fetch(
-				`http://localhost:5000/allToys/filter=${search}`
+				`https://kidsplay-server.vercel.app/allToys/filter=${search}`
 			);
 			const data = await res.json();
 			setStoreToys(data);
