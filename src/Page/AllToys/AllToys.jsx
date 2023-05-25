@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import ToyTableRow from "./ToyTableRow";
 
@@ -40,6 +41,12 @@ const AllToys = () => {
 
 	return (
 		<div className="max-w-7xl px-4 mx-auto py-16 ">
+			{/* Page Title */}
+			<Helmet>
+				<title>All Toys</title>
+				<meta name="description" content="All Toys Page" />
+			</Helmet>
+
 			<h2 className="text-4xl font-bold mb-8 text-center">All Toys</h2>
 			<div className="form-control w-96 mx-auto py-4">
 				<input

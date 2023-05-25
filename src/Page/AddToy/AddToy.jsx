@@ -2,6 +2,7 @@
 import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import {Helmet} from "react-helmet-async"
 
 const AddToy = () => {
 	const { user } = useContext(AuthContext);
@@ -124,6 +125,11 @@ const AddToy = () => {
 
 	return (
 		<div className="max-w-7xl mx-auto flex flex-col items-center justify-center md:flex-row gap-16 w-full">
+			{/* Page Title */}
+			<Helmet>
+				<title>Add a toy</title>
+				<meta name="description" content="Add a toy page" />
+			</Helmet>
 			<div className="px-8 w-full pt-14 pb-36">
 				<h2 className="text-4xl font-bold mb-4 text-center">
 					Add A Toy

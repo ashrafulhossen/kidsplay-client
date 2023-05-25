@@ -2,6 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
+import {HelmetProvider} from "react-helmet-async";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import "./index.css";
@@ -78,7 +79,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<AuthProvider>
-		<Toaster position="bottom-right" reverseOrder={true} />
-		<RouterProvider router={router} />
+		<HelmetProvider>
+			<Toaster position="bottom-right" reverseOrder={true} />
+			<RouterProvider router={router} />
+		</HelmetProvider>
 	</AuthProvider>
 );

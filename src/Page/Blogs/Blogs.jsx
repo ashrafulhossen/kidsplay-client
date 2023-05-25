@@ -1,9 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import {Helmet} from "react-helmet-async"
 
 const Blogs = () => {
 	return (
 		<div className="max-w-7xl mx-auto px-8 py-16">
+			{/* Page Title */}
+			<Helmet>
+				<title>Blogs</title>
+				<meta name="description" content="Blogs Page" />
+			</Helmet>
 			<div className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box mb-2">
 				<input type="checkbox" className="peer" />
 				<div className="collapse-title text-xl bg-gradient peer-checked:bg-gradient text-zinc-700 px-8 font-bold peer-checked:border-b">

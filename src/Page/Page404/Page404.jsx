@@ -4,11 +4,17 @@ import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import img404 from "../../../public/assets/404/404.json";
+import { Helmet } from "react-helmet-async";
 
 const Page404 = () => {
     console.log(img404);
 	return (
 		<div className="max-w-2xl mx-auto py-20 flex items-center justify-center flex-col">
+			{/* Page Title */}
+			<Helmet>
+				<title>404 Error</title>
+				<meta name="description" content="404 Error Page" />
+			</Helmet>
 			<Link to={"/"}>
 				<button
 					style={{ textShadow: "0px 0px 10px #374151" }}

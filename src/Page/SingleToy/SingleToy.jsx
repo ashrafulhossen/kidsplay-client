@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { HiOutlineStar, HiStar } from "react-icons/hi";
 import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
@@ -16,6 +17,11 @@ const SingleToy = () => {
 	} = useLoaderData();
 	return (
 		<div className="max-w-7xl px-4 mx-auto py-16">
+			{/* Page Title */}
+			<Helmet>
+				<title>Toy Details</title>
+				<meta name="description" content="Toy Details Page" />
+			</Helmet>
 			<div className="card lg:card-side shadow-xl p-10 items-center justify-center gap-8">
 				<figure>
 					<img

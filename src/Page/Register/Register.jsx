@@ -5,6 +5,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import animation from "../../../public/assets/login-animation.json";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
 	const { createUser } = useContext(AuthContext);
@@ -54,6 +55,11 @@ const Register = () => {
 
 	return (
 		<div className="max-w-7xl mx-auto flex flex-col items-center justify-center md:flex-row gap-16 max-[639px]:gap-56 pb-20 md:pt-20">
+			{/* Page Title */}
+			<Helmet>
+				<title>Register</title>
+				<meta name="description" content="Register Page" />
+			</Helmet>
 			<div className="max-w-[500px]">
 				<div className="w-full lg:ml-auto h-56  sm:h-96">
 					<Lottie animationData={animation} loop={true} />

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import MyToysTableRow from "./MyToysTableRow";
+import {Helmet} from "react-helmet-async"
 
 const MyToys = () => {
 	const loadMyAllToys = useLoaderData();
@@ -70,6 +71,12 @@ const MyToys = () => {
 
 	return (
 		<div className="max-w-7xl px-4 mx-auto py-16 ">
+			{/* Page Title */}
+			<Helmet>
+				<title>My Toys</title>
+				<meta name="description" content="My Toys Page" />
+			</Helmet>
+
 			<h2 className="text-4xl font-bold mb-8 text-center">My Toys</h2>
 
 			<div className="overflow-x-auto ">
